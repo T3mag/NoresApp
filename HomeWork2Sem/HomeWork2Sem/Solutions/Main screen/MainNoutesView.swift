@@ -9,7 +9,6 @@ import UIKit
 
 class MainNoutesView: UIView {
     var viewController: MainNoutesVC!
-    
     lazy var notesHeadLabel: UILabel = {
         var label = UILabel()
         label.text = "Заметки 2.0"
@@ -18,7 +17,6 @@ class MainNoutesView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     lazy var textFieldSearchIconView: UIView = {
         let findTextFieldImageView = UIImageView(frame: CGRect(x: 8.0, y: 10.0, width: 20.0, height: 20.0))
         let image = UIImage(systemName: "magnifyingglass")
@@ -31,7 +29,6 @@ class MainNoutesView: UIView {
         findTextFieldView.backgroundColor = .clear
         return findTextFieldView
     }()
-    
     lazy var notesSeachTextField: UITextField = {
         var textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(
@@ -48,16 +45,24 @@ class MainNoutesView: UIView {
         textField.leftView = textFieldSearchIconView
         return textField
     }()
-    
+    lazy var notesTableView: UITableView = {
+        var tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(MainNoutesCell.self,
+                           forCellReuseIdentifier: "mainNoutesTableViewCell")
+        tableView.backgroundColor = .black
+        tableView.separatorColor = UIColor(red: 146/255, green: 146/255, blue: 154/255, alpha: 1)
+        return tableView
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .black
-        addSubviews()
+        setupLayout()
     }
-    
-    func addSubviews() {
+    func setupLayout() {
         addSubview(notesHeadLabel)
         addSubview(notesSeachTextField)
+        addSubview(notesTableView)
         NSLayoutConstraint.activate([
             notesHeadLabel.topAnchor.constraint(
                 equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -69,10 +74,21 @@ class MainNoutesView: UIView {
                 equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             notesSeachTextField.trailingAnchor.constraint(
                 equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            notesSeachTextField.heightAnchor.constraint(equalToConstant: 30)
+            notesSeachTextField.heightAnchor.constraint(equalToConstant: 30),
+            notesTableView.topAnchor.constraint(
+                equalTo: notesSeachTextField.bottomAnchor, constant: 15),
+            notesTableView.leadingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            notesTableView.trailingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            notesTableView.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10)
         ])
     }
-    
+    func setupDataSource(dataSource: MainNoutesDataSource) {
+        notesTableView.dataSource = dataSource
+        notesTableView.delegate = dataSource
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

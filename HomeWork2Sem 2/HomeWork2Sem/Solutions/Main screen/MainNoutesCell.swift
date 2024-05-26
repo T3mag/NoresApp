@@ -69,11 +69,3 @@ class MainNoutesCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension MainNoutesCell {
-    func roundCorners(_ corners:UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
-    }
-}

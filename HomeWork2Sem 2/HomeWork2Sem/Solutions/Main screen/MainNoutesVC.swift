@@ -24,6 +24,10 @@ class MainNoutesVC: UIViewController {
     override func loadView() {
         view = noutesView
     }
+    override func viewWillAppear(_ animated: Bool) {
+        noutesViewModel.obtainSaveDataCoreData()
+        noutesView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         noutesView.viewController = self
@@ -40,6 +44,10 @@ class MainNoutesVC: UIViewController {
             }
             .store(in: &cancelebels)
     }
+    func deleteNouteByIndexPath(indexPath: IndexPath) {
+        noutesViewModel.deleteNouteByIndexPath(indexPath: indexPath)
+        noutesView.reloadData()
+    }
 }
 extension MainNoutesVC {
     func setupnavigationBar() {
@@ -48,14 +56,21 @@ extension MainNoutesVC {
             style: .plain, target: self, action: nil)
         let rightBarButton = UIBarButtonItem(
             image: UIImage(systemName: "square.and.pencil"),
-            style: .plain, target: self, action: nil)
+            style: .plain, target: self, action: #selector(createNoutePage))
         rightBarButton.tintColor = .white
         leftBarButton.tintColor = .white
+        rightBarButton.accessibilityIdentifier = "test_New_noute"
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
     }
-    func openNoutePage() {
-        let noutePageVC = NouteVC()
+    func openNoutePage(indexPath: IndexPath) {
+        let viewModel = NoutesViewModel()
+        let noutePageVC = NouteVC(indexPath: indexPath, viewModel: viewModel)
+        navigationController?.pushViewController(noutePageVC, animated: true)
+    }
+    @objc func createNoutePage() {
+        let viewModel = NoutesViewModel()
+        let noutePageVC = NouteVC(viewModel: viewModel)
         navigationController?.pushViewController(noutePageVC, animated: true)
     }
 }

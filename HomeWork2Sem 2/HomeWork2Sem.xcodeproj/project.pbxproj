@@ -17,6 +17,7 @@
 		140773EF2BB5B87E0040642B /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140773ED2BB5B87E0040642B /* Note+CoreDataClass.swift */; };
 		140773F02BB5B87E0040642B /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140773EE2BB5B87E0040642B /* Note+CoreDataProperties.swift */; };
 		140773F22BB5C0A50040642B /* MainNoutesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140773F12BB5C0A50040642B /* MainNoutesDataSource.swift */; };
+		143B603B2BF3F7E800FACA0C /* NoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143B603A2BF3F7E800FACA0C /* NoutesViewModel.swift */; };
 		1480A7042BB099B600DC96D0 /* MainNoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480A7032BB099B600DC96D0 /* MainNoutesView.swift */; };
 		1480A7072BB0A34A00DC96D0 /* MainNoutesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480A7062BB0A34A00DC96D0 /* MainNoutesVC.swift */; };
 		14B3B66A2BAF312E00E3B0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B3B6692BAF312E00E3B0D5 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		140773ED2BB5B87E0040642B /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		140773EE2BB5B87E0040642B /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		140773F12BB5C0A50040642B /* MainNoutesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNoutesDataSource.swift; sourceTree = "<group>"; };
+		143B603A2BF3F7E800FACA0C /* NoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoutesViewModel.swift; sourceTree = "<group>"; };
 		1480A7032BB099B600DC96D0 /* MainNoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNoutesView.swift; sourceTree = "<group>"; };
 		1480A7062BB0A34A00DC96D0 /* MainNoutesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNoutesVC.swift; sourceTree = "<group>"; };
 		14B3B6662BAF312E00E3B0D5 /* HomeWork2Sem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWork2Sem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 			children = (
 				140773D32BB4805B0040642B /* NouteVC.swift */,
 				140773D52BB480B20040642B /* NouteView.swift */,
+				143B603A2BF3F7E800FACA0C /* NoutesViewModel.swift */,
 			);
 			path = "Noute screen";
 			sourceTree = "<group>";
@@ -230,7 +233,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				140773E02BB577860040642B /* PBXTargetDependency */,
+				140774C62BBC01DD0040642B /* PBXTargetDependency */,
 			);
 			name = HomeWork2Sem;
 			productName = HomeWork2Sem;
@@ -362,6 +365,7 @@
 				140773F02BB5B87E0040642B /* Note+CoreDataProperties.swift in Sources */,
 				1480A7042BB099B600DC96D0 /* MainNoutesView.swift in Sources */,
 				14B3B66A2BAF312E00E3B0D5 /* AppDelegate.swift in Sources */,
+				143B603B2BF3F7E800FACA0C /* NoutesViewModel.swift in Sources */,
 				1480A7072BB0A34A00DC96D0 /* MainNoutesVC.swift in Sources */,
 				14B3B66C2BAF312E00E3B0D5 /* SceneDelegate.swift in Sources */,
 				140773EC2BB5AEBD0040642B /* CoreDataManager.swift in Sources */,
@@ -390,9 +394,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		140773E02BB577860040642B /* PBXTargetDependency */ = {
+		140774C62BBC01DD0040642B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 140773DF2BB577860040642B /* SwiftLintPlugin */;
+			productRef = 140774C52BBC01DD0040642B /* SwiftLintPlugin */;
 		};
 		14B3B6812BAF313000E3B0D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -730,7 +734,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		140773DF2BB577860040642B /* SwiftLintPlugin */ = {
+		140774C52BBC01DD0040642B /* SwiftLintPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 140773DE2BB577560040642B /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintPlugin";

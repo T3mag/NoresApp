@@ -24,9 +24,15 @@ class MainNoutesDataSource: NSObject, UITableViewDelegate, UITableViewDataSource
         cell.setupDataInCell(name: item.name!,
                              date: item.date!,
                              subTitle: item.note!)
+        cell.accessibilityIdentifier = "Ячейка"
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewConroller!.openNoutePage()
+        self.viewConroller!.openNoutePage(indexPath: indexPath)
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            self.viewConroller!.deleteNouteByIndexPath(indexPath: indexPath)
+        }
     }
 }

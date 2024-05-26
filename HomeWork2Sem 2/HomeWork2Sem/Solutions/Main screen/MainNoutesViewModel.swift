@@ -10,6 +10,10 @@ class MainNoutesViewModel {
     func obtainSaveDataCoreData() {
         noutes = coreDataManager.obtainSaveData()
     }
+    func deleteNouteByIndexPath(indexPath: IndexPath) {
+        coreDataManager.deleteNoutes(id: noutes[indexPath.row].id)
+        obtainSaveDataCoreData()
+    }
 }
 
 extension MainNoutesViewModel {

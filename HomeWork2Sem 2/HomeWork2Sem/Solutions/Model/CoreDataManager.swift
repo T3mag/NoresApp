@@ -28,6 +28,17 @@ class CoreDataManager {
             }
         }
     }
+    func updateCoreDataInfo(identifire: Int16, info: [String]) {
+        guard let noute = obtainSaveData().first(where: {$0.id == identifire}) else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM YYYY"
+        noute.name = info[0]
+        noute.note = info[1]
+        noute.date = dateFormatter.date(from: info[2])
+        if viewContext.hasChanges {
+            try? viewContext.save()
+        }
+    }
     func addNoutes(name: String, date: Date, title: String) {
         let noute = Note(context: viewContext)
         var previousId: Int16 = 0
@@ -51,9 +62,9 @@ class CoreDataManager {
             try? viewContext.save()
         }
     }
-    func deleteNoutes(id: Int) {
-        let noute = obtainSaveData().first(where: {$0.id == id})
-        viewContext.delete(noute!)
+    func deleteNoutes(id: Int16) {
+        guard let noute = obtainSaveData().first(where: {$0.id == id}) else { return }
+        viewContext.delete(noute)
         if viewContext.hasChanges {
             try? viewContext.save()
         }

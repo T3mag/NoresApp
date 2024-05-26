@@ -51,9 +51,12 @@ class MainNoutesView: UIView {
         tableView.register(MainNoutesCell.self,
                            forCellReuseIdentifier: "mainNoutesTableViewCell")
         tableView.backgroundColor = .black
-        tableView.separatorColor = UIColor(red: 146/255, green: 146/255, blue: 154/255, alpha: 1)
+        tableView.separatorColor = self.backgroundColor
         return tableView
     }()
+    func reloadData() {
+        notesTableView.reloadData()
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .black
